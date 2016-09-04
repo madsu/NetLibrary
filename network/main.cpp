@@ -14,8 +14,9 @@ int main()
 
 	int A2 = 0;
 	char ch2 = 0;
-	stream.ReadData(ch2);
+	stream.SetBuffer(pBuffer);
 	stream.ReadData(A2);
+	stream.ReadData(ch2);
 
 	delete pBuffer;
 	return 0;

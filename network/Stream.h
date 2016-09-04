@@ -34,8 +34,8 @@ bool CStream::WriteData(const T& data)
 template<typename T>
 bool CStream::ReadData(T& data)
 {
-	memcpy((void*)&data, m_pBuffer + m_nLen - sizeof(T), sizeof(T));
+	memcpy((void*)&data, m_pBuffer + m_nLen, sizeof(T));
 
-	m_nLen -= sizeof(T);
+	m_nLen += sizeof(T);
 	return true;
 }
