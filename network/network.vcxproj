@@ -22,6 +22,7 @@
     <ProjectGuid>{41FCCB39-32B6-47A2-AF1B-82BFAF9A71A3}</ProjectGuid>
     <RootNamespace>network</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>basiclibrary</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -111,9 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="iocp.h" />
+    <ClInclude Include="Stream.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="iocp.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

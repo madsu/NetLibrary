@@ -3,9 +3,28 @@
 #include "winsock2.h"
 #pragma comment(lib,"ws2_32.lib")
 
-clas CNetWorkSession
+enum IO_TYPE
 {
-	public:
-		CNetWorkSession();
-		~CNetWorkSession();
-}
+	IO_ACCEPT = 0,
+	IO_READ ,
+	IO_WRITE
+};
+
+typedef struct _OVERLAPPED_EX
+{
+	OVERLAPPED overlapped;
+	IO_TYPE    ioType;
+	void*      pObject;
+}OVERLAPPPED_EX;
+
+class CNetWorkSession
+{
+public:
+	CNetWorkSession();
+	~CNetWorkSession();
+
+public:
+	bool Start();
+	bool Stop();
+	void Bind();
+};
