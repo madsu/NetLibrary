@@ -2,6 +2,5 @@
 *.suo
 *.db
 *.opendb
-*.sln
 **/Debug/**
 **/Release/**
