@@ -1,7 +1,6 @@
 #pragma once
 
-#include "winsock2.h"
-#pragma comment(lib,"ws2_32.lib")
+#include "InitSocket.h"
 
 enum IO_TYPE
 {
@@ -27,4 +26,7 @@ public:
 	bool Start();
 	bool Stop();
 	void Bind();
+
+private:
+	CInitSocket m_initSocket;
 };

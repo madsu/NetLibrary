@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="InitSocket.h" />
     <ClInclude Include="iocp.h" />
     <ClInclude Include="Registry.h" />
     <ClInclude Include="Stream.h" />
