@@ -1,4 +1,9 @@
+#include <tchar.h>
+#include <assert.h>
+#include <windows.h>
+
 #include "Stream.h"
+#include "Registry.h"
 
 int main()
 {
@@ -19,5 +24,14 @@ int main()
 	stream.ReadData(ch2);
 
 	delete pBuffer;
+
+	DWORD value = 0;
+	CRegistry registry;
+	registry.CreateKey(HKEY_CURRENT_USER, _T("MaDashu"));
+	registry.SetValue(_T("madsu"), 100);
+	registry.GetValue(_T("madsu"), &value);
+	assert(value == 100);
+	registry.DeleteKey(HKEY_CURRENT_USER, _T("MaDashu"));
+	registry.Close();
 	return 0;
 }

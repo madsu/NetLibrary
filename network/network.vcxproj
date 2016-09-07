@@ -112,11 +112,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="iocp.h" />
+    <ClInclude Include="Registry.h" />
     <ClInclude Include="Stream.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="iocp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Registry.cpp" />
     <ClCompile Include="Stream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
