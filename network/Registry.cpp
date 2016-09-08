@@ -14,7 +14,6 @@ CRegistry::~CRegistry()
 
 bool CRegistry::Open(HKEY rootKey, const TCHAR* subKey)
 {
-	
 	if (!subKey)
 		return false;
 
