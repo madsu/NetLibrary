@@ -29,7 +29,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -111,12 +111,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="InitSocket.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="SocketCommon.h" />
     <ClInclude Include="iocp.h" />
     <ClInclude Include="Registry.h" />
     <ClInclude Include="Stream.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="iocp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Registry.cpp" />

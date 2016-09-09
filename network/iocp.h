@@ -1,20 +1,6 @@
 #pragma once
 
-#include "InitSocket.h"
-
-enum IO_TYPE
-{
-	IO_ACCEPT = 0,
-	IO_READ ,
-	IO_WRITE
-};
-
-typedef struct _OVERLAPPED_EX
-{
-	OVERLAPPED overlapped;
-	IO_TYPE    ioType;
-	void*      pObject;
-}OVERLAPPPED_EX;
+#include "SocketCommon.h"
 
 class CNetWorkSession
 {
@@ -23,10 +9,18 @@ public:
 	~CNetWorkSession();
 
 public:
-	bool Start();
+	bool Start(int port = 6666);
 	bool Stop();
-	void Bind();
+
+protected:
+	static DWORD WINAPI _WorkerThreadFunc(LPVOID param);
 
 private:
 	CInitSocket m_initSocket;
+	LPFN_ACCEPTEX m_pfnAcceptEx;
+	SOCKET      m_listenSocket;
+
+	HANDLE      m_hCompletionPort;
+	int         m_nWorkThreads;
+	HANDLE*     m_phWorkThreads;
 };
