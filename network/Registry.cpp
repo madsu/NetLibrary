@@ -44,7 +44,7 @@ bool CRegistry::SetValue(const TCHAR* valueName, const TCHAR* value)
 	if (!m_bIsOpen)
 		return false;
 
-	if (RegSetValueEx(m_openKey, valueName, 0, REG_SZ, (BYTE*)&value, _tcslen(value)) != ERROR_SUCCESS)
+	if (RegSetValueEx(m_openKey, valueName, 0, REG_SZ, (BYTE*)&value, (DWORD)_tcslen(value)) != ERROR_SUCCESS)
 		return false;
 
 	return true;
