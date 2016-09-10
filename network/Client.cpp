@@ -28,11 +28,13 @@ bool CClient::InilizeContext()
 bool CClient::PostAcceptEx(LPFN_ACCEPTEX acceptexfunc, SOCKET listenSocket)
 {
 	DWORD dwBytes = 0;
+	
+	if(acceptexfunc == NULL)
+		return false;
 
 	if (FALSE == acceptexfunc(listenSocket, m_socket, &m_iRecvIO.bufffer, m_iRecvIO.len - ((sizeof(SOCKADDR_IN) + 16) * 2),
 		sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &dwBytes, &m_iRecvIO.overlapped))
-	{
 		return false;
-	}
+		
 	return true;
 }
