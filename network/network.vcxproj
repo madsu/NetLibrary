@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EchoServer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="net\EventLoop.cpp" />
+    <ClCompile Include="net\TCPServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EchoServer.h" />
+    <ClInclude Include="net\EventLoop.h" />
+    <ClInclude Include="net\TCPServer.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{41FCCB39-32B6-47A2-AF1B-82BFAF9A71A3}</ProjectGuid>
     <RootNamespace>network</RootNamespace>
@@ -110,20 +121,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Client.h" />
-    <ClInclude Include="SocketCommon.h" />
-    <ClInclude Include="iocp.h" />
-    <ClInclude Include="Registry.h" />
-    <ClInclude Include="Stream.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Client.cpp" />
-    <ClCompile Include="iocp.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Registry.cpp" />
-    <ClCompile Include="Stream.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
