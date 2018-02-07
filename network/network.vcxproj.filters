@@ -13,39 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\net">
+      <UniqueIdentifier>{84c3ad5f-dd05-49d4-9078-819bb3db8213}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\net">
+      <UniqueIdentifier>{95904b88-da32-4468-9084-d74d8db4e3d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="iocp.h">
+    <ClInclude Include="EchoServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stream.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="net\TCPServer.h">
+      <Filter>Header Files\net</Filter>
     </ClInclude>
-    <ClInclude Include="Registry.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="net\EventLoop.h">
+      <Filter>Header Files\net</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SocketCommon.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="net\SocketCommon.h">
+      <Filter>Header Files\net</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="iocp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stream.cpp">
+    <ClCompile Include="EchoServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Registry.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="net\EventLoop.cpp">
+      <Filter>Source Files\net</Filter>
     </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="net\TCPServer.cpp">
+      <Filter>Source Files\net</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
