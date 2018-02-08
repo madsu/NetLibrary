@@ -10,5 +10,9 @@ public:
 
 	void Start();
 
+	void onConnection(const TcpConnectionPtr& conn);
+	void onMessage(const TcpConnectionPtr& conn, char* buf);
+
+private:
 	TcpServer server_;
 };

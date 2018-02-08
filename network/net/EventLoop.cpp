@@ -1,4 +1,5 @@
 #include "EventLoop.h"
+#include "Channel.h"
 
 EventLoop::EventLoop()
 	:iocp_(CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0))
@@ -30,32 +31,9 @@ void EventLoop::Loop()
 		return;
 	}
 
-	PER_HANDLE_DATA* data = reinterpret_cast<PER_HANDLE_DATA*>(uComKey);
+	Channel* channel = reinterpret_cast<Channel*>(uComKey);
 	PER_IO_CONTEXT*  io = CONTAINING_RECORD(pOverlapped, PER_IO_CONTEXT, overlapped);
-
-	switch (io->ioType)
-	{
-		case IO_ACCEPT:
-		{
-			connection_(data, io);
-		}
-		break;
-
-		case IO_READ:
-		{
-	
-		}
-		break;
-
-		case IO_WRITE:
-		{
-
-		}
-		break;
-
-	default:
-		break;
-	}
+	channel->HandleIoMessage(io);
 }
 
 void EventLoop::Register(HANDLE h, ULONG_PTR key)

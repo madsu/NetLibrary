@@ -21,13 +21,19 @@
   <ItemGroup>
     <ClCompile Include="EchoServer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="net\Acceptor.cpp" />
+    <ClCompile Include="net\Channel.cpp" />
     <ClCompile Include="net\EventLoop.cpp" />
+    <ClCompile Include="net\TcpConnection.cpp" />
     <ClCompile Include="net\TCPServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EchoServer.h" />
+    <ClInclude Include="net\Acceptor.h" />
+    <ClInclude Include="net\Channel.h" />
     <ClInclude Include="net\EventLoop.h" />
     <ClInclude Include="net\SocketCommon.h" />
+    <ClInclude Include="net\TcpConnection.h" />
     <ClInclude Include="net\TCPServer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -6,6 +6,10 @@
 #include <Windows.h>
 #pragma comment(lib, "WS2_32")
 
+#include <map>
+#include <vector>
+#include <list>
+
 #define  MAX_POST_ACCEPT 10
 #define  MAX_BUFFER_LEN 10240
 
@@ -25,11 +29,6 @@ typedef struct _PER_IO_CONTEXT_
 	int        len;
 	SOCKET     client;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
-
-typedef struct _PER_HANDLE_DATA
-{
-	SOCKET  socket;
-}PER_HANDLE_DATA, *PPER_HANDLE_DATA;
 
 class CInitSocket
 {
