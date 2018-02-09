@@ -42,6 +42,9 @@
     <ClInclude Include="net\Acceptor.h">
       <Filter>Header Files\net</Filter>
     </ClInclude>
+    <ClInclude Include="net\Callbacks.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

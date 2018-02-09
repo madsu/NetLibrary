@@ -26,7 +26,6 @@ typedef struct _PER_IO_CONTEXT_
 	IO_TYPE    ioType;
 	WSABUF     wsaBuff;
 	char       buffer[MAX_BUFFER_LEN];
-	int        len;
 	SOCKET     client;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
 

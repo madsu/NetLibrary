@@ -32,6 +32,10 @@ public:
 	{
 		acceptCallback_ = cb;
 	}
+	SOCKET GetSocket()
+	{
+		return socket_;
+	}
 
 private:
 	SOCKET socket_;

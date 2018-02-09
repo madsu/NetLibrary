@@ -60,7 +60,7 @@ void Acceptor::PostAccept()
 	cxt_.ioType = IO_ACCEPT;
 	cxt_.client = clientsock_;
 	DWORD dwBytes = 0;
-	if (FALSE == acceptEx_(socket_, clientsock_, &cxt_.buffer, cxt_.len - ((sizeof(SOCKADDR_IN) + 16) * 2),
+	if (FALSE == acceptEx_(socket_, clientsock_, &cxt_.buffer, MAX_BUFFER_LEN - ((sizeof(SOCKADDR_IN) + 16) * 2),
 		sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &dwBytes, &cxt_.overlapped))
 		return ;
 }

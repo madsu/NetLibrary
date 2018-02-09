@@ -7,9 +7,6 @@ class EventLoop;
 class TcpServer 
 {
 public:
-	typedef std::function<void(const TcpConnectionPtr)> ConnectionCallback;
-	typedef std::function<void(const TcpConnectionPtr, char*)> MessageCallback;
-
 	TcpServer(EventLoop* loop, const int listen_port);
 	~TcpServer();
 

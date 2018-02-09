@@ -21,5 +21,8 @@ bool TcpServer::Start()
 
 void TcpServer::NewConnection(SOCKET socket)
 {
-	//TODO
+	TcpConnectionPtr pNewConn = new TcpConnection(loop_, socket);
+	if (!pNewConn)
+		return;
+
 }

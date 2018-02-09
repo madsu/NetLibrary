@@ -30,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="EchoServer.h" />
     <ClInclude Include="net\Acceptor.h" />
+    <ClInclude Include="net\Callbacks.h" />
     <ClInclude Include="net\Channel.h" />
     <ClInclude Include="net\EventLoop.h" />
     <ClInclude Include="net\SocketCommon.h" />
