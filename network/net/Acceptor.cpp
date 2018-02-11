@@ -1,4 +1,5 @@
 #include "Acceptor.h"
+#include <iostream>
 
 Acceptor::Acceptor(EventLoop* loop, int port)
 	: socket_(WSASocket(AF_INET, SOCK_STREAM, IPPROTO_IP, NULL, 0, WSA_FLAG_OVERLAPPED))
@@ -60,7 +61,10 @@ void Acceptor::PostAccept()
 	cxt_.ioType = IO_ACCEPT;
 	cxt_.client = clientsock_;
 	DWORD dwBytes = 0;
-	if (FALSE == acceptEx_(socket_, clientsock_, &cxt_.buffer, MAX_BUFFER_LEN - ((sizeof(SOCKADDR_IN) + 16) * 2),
-		sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &dwBytes, &cxt_.overlapped))
-		return ;
+	INT   len = sizeof(SOCKADDR_IN) + 16;
+	BOOL ret = acceptEx_(socket_, clientsock_, &cxt_.buffer, 0, len, len, &dwBytes, &cxt_.overlapped);
+	if (FALSE == ret && ERROR_IO_PENDING != GetLastError()) {
+		std::cout << "Accept failed:" << std::endl;
+	}
+	return;
 }

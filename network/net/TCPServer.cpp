@@ -1,4 +1,5 @@
 #include "TCPServer.h"
+#include "EventLoop.h"
 
 TcpServer::TcpServer(EventLoop* loop, const int listen_port)
 	: loop_(loop)
@@ -15,6 +16,7 @@ TcpServer::~TcpServer()
 
 bool TcpServer::Start()
 {
+	loop_->Start();
 	accept_.Start();
 	return true;
 }
@@ -25,4 +27,6 @@ void TcpServer::NewConnection(SOCKET socket)
 	if (!pNewConn)
 		return;
 
+	pNewConn->SetMessageCallback(messageCallback_);
+	pNewConn->PostRecv();
 }

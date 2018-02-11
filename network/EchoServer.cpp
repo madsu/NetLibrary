@@ -1,4 +1,5 @@
 #include "EchoServer.h"
+#include <iostream>
 
 EchoServer::EchoServer(EventLoop* loop, int port)
 	:server_(loop, port)
@@ -27,5 +28,5 @@ void EchoServer::onConnection(const TcpConnectionPtr& conn)
 
 void EchoServer::onMessage(const TcpConnectionPtr& conn, char* buf)
 {
-
+	std::cout << buf << std::endl;
 }

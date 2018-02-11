@@ -23,12 +23,14 @@ public:
 		messageCallback_ = cb;
 	}
 
+private:
 	void NewConnection(SOCKET socket);
 
 private:
 	EventLoop* loop_;
 	CInitSocket init_;
 	Acceptor   accept_;
+	std::map<UINT32, TcpConnectionPtr> sessions_;
 
 	//用户回调
 	ConnectionCallback connectionCallback_;

@@ -23,10 +23,12 @@ void TcpConnection::HandleRead(char* buf)
 void TcpConnection::PostRecv()
 {
 	DWORD dwBytes = 0;
+	DWORD flags = 0;
+
 	memset(&ctx_, 0, sizeof(ctx_));
 	ctx_.ioType = IO_READ;
 	ctx_.wsaBuff.buf = ctx_.buffer;
 	ctx_.wsaBuff.len = MAX_BUFFER_LEN;
 
-    WSARecv(channel_.GetSocket(), &ctx_.wsaBuff, 1, &dwBytes, 0, &ctx_.overlapped, NULL);
+    WSARecv(channel_.GetSocket(), &ctx_.wsaBuff, 1, &dwBytes, &flags, &ctx_.overlapped, NULL);
 }
