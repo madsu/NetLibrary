@@ -29,6 +29,7 @@ private:
 	SOCKET  socket_;
 	PER_IO_CONTEXT cxt_;
 	LPFN_ACCEPTEX acceptEx_;
+	LPFN_GETACCEPTEXSOCKADDRS getAcceptExSockAddrs_;
 
 	Channel channel_;
 

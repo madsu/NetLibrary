@@ -15,17 +15,21 @@ struct Task
 class EventLoop
 {
 public:
+	typedef std::function<void()> Functor;
+
 	EventLoop();
 	~EventLoop();
 
 public:
-	void Start(INT worker_nums = 0);
-	void Stop();
 	void Loop(int time_out = 100);
 	void Register(HANDLE h, ULONG_PTR key);
+	void RunInLoop(const Functor& cb);
 
 private:
+	void Start(INT worker_nums = 0);
+	void Stop();
 	void Worker();
+	void DoPendingFunctor();
 
 private:
 	const int maxSize = 20;
@@ -34,7 +38,9 @@ private:
 	std::condition_variable consume_;
 	std::deque<Task> tasks_;
 
-	HANDLE iocp_;
+	//Delay call
+	std::vector<Functor> pendingFunctors_;
 
+	HANDLE iocp_;
 	std::vector<std::thread> workers_;
 };

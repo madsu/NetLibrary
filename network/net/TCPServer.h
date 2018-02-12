@@ -11,7 +11,7 @@ public:
 	~TcpServer();
 
 public:
-	bool Start();
+	void Start();
 
 	void SetConectionCallback(const ConnectionCallback& cb)
 	{
@@ -25,6 +25,7 @@ public:
 
 private:
 	void NewConnection(SOCKET socket);
+	void RemoveConnection(TcpConnectionPtr conn);
 
 private:
 	EventLoop* loop_;

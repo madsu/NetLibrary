@@ -13,11 +13,17 @@ public:
 		messageCallback_ = cb;
 	}
 
+	void SetCloseCallback(const CloseCallback& cb)
+	{
+		closeCallback_ = cb;
+	}
+
 	void PostRecv();
-	void HandleRead(char* buf);
+	void HandleRead(char* buf, DWORD len);
 
 private:
 	Channel channel_;
 	PER_IO_CONTEXT ctx_;
 	MessageCallback messageCallback_;
+	CloseCallback   closeCallback_;
 };

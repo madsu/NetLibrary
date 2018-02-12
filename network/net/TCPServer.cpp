@@ -14,11 +14,9 @@ TcpServer::~TcpServer()
 
 }
 
-bool TcpServer::Start()
+void TcpServer::Start()
 {
-	loop_->Start();
 	accept_.Start();
-	return true;
 }
 
 void TcpServer::NewConnection(SOCKET socket)
@@ -28,5 +26,12 @@ void TcpServer::NewConnection(SOCKET socket)
 		return;
 
 	pNewConn->SetMessageCallback(messageCallback_);
+	pNewConn->SetCloseCallback(
+		std::bind(&TcpServer::RemoveConnection, this, std::placeholders::_1));
 	pNewConn->PostRecv();
+}
+
+void TcpServer::RemoveConnection(TcpConnectionPtr conn)
+{
+	delete conn;
 }

@@ -5,6 +5,7 @@
 EventLoop::EventLoop()
 	:iocp_(CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0))
 {
+	Start();
 }
 
 EventLoop::~EventLoop()
@@ -58,6 +59,8 @@ void EventLoop::Loop(int time_out /* = 100 */)
 		PER_IO_CONTEXT* io = task.ctx;
 		channel->HandleIoMessage(io);
 	}
+
+	DoPendingFunctor();
 }
 
 void EventLoop::Register(HANDLE h, ULONG_PTR key)
@@ -66,6 +69,21 @@ void EventLoop::Register(HANDLE h, ULONG_PTR key)
 		return;
 
 	CreateIoCompletionPort(h, iocp_, key, 0);
+}
+
+void EventLoop::RunInLoop(const Functor& cb)
+{
+	pendingFunctors_.push_back(cb);
+}
+
+void EventLoop::DoPendingFunctor()
+{
+	for (auto& cb : pendingFunctors_)
+	{
+		cb();
+	}
+
+	pendingFunctors_.clear();
 }
 
 void EventLoop::Worker()
@@ -89,6 +107,7 @@ void EventLoop::Worker()
 		Task task;
 		task.channel = reinterpret_cast<Channel*>(uComKey);
 		task.ctx = CONTAINING_RECORD(pOverlapped, PER_IO_CONTEXT, overlapped);
+		task.ctx->bufLen = dwTranceBytes;
 
 		std::unique_lock<std::mutex> lcx(mtx_);
 		produce_.wait(lcx, [this] {return tasks_.size() != maxSize; });

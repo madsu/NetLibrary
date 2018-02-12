@@ -17,7 +17,8 @@ enum IO_TYPE
 {
 	IO_ACCEPT = 0,
 	IO_READ,
-	IO_WRITE
+	IO_WRITE,
+	IO_REMOVE
 };
 
 typedef struct _PER_IO_CONTEXT_
@@ -26,6 +27,7 @@ typedef struct _PER_IO_CONTEXT_
 	IO_TYPE    ioType;
 	WSABUF     wsaBuff;
 	char       buffer[MAX_BUFFER_LEN];
+	DWORD      bufLen;
 	SOCKET     client;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
 

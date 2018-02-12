@@ -6,7 +6,7 @@ class Channel
 {
 public:
 	typedef std::function<void()> EventCallback;
-	typedef std::function<void(char* buf)> ReadEventCallback;
+	typedef std::function<void(char* buf, DWORD len)> ReadEventCallback;
 
 	explicit Channel(EventLoop* loop, SOCKET s);
 	~Channel();

@@ -4,7 +4,7 @@ TcpConnection::TcpConnection(EventLoop* loop, SOCKET socket)
 	:channel_(loop, socket)
 {
 	channel_.SetReadCallback(
-		std::bind(&TcpConnection::HandleRead, this, std::placeholders::_1));
+		std::bind(&TcpConnection::HandleRead, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 TcpConnection::~TcpConnection()
@@ -12,8 +12,14 @@ TcpConnection::~TcpConnection()
 
 }
 
-void TcpConnection::HandleRead(char* buf)
+void TcpConnection::HandleRead(char* buf, DWORD len)
 {
+	if (len == 0) {
+		//close
+		closesocket(channel_.GetSocket());
+		closeCallback_(this);
+		return;
+	}
 
 	messageCallback_(this, buf);
 

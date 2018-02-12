@@ -1,5 +1,6 @@
 #include "Acceptor.h"
 #include <iostream>
+#include <WS2tcpip.h>
 
 Acceptor::Acceptor(EventLoop* loop, int port)
 	: socket_(WSASocket(AF_INET, SOCK_STREAM, IPPROTO_IP, NULL, 0, WSA_FLAG_OVERLAPPED))
@@ -36,11 +37,30 @@ void Acceptor::Start()
 	if (nRet == SOCKET_ERROR)
 		return ;
 
+	GUID GuidGetAcceptExSockAddrs = WSAID_GETACCEPTEXSOCKADDRS;
+	nRet = WSAIoctl(socket_, SIO_GET_EXTENSION_FUNCTION_POINTER, &GuidGetAcceptExSockAddrs, sizeof(GuidGetAcceptExSockAddrs),
+		&getAcceptExSockAddrs_, sizeof(getAcceptExSockAddrs_), &dwBytes, NULL, NULL);
+	if (nRet == SOCKET_ERROR)
+		return;
+
 	PostAccept();
 }
 
 void Acceptor::HandleAccept()
 {
+	SOCKADDR_IN* ClientAddr = NULL;
+	SOCKADDR_IN* LocalAddr = NULL;
+	int remoteLen = sizeof(SOCKADDR_IN);
+	int localLen = sizeof(SOCKADDR_IN);
+
+	getAcceptExSockAddrs_(cxt_.buffer, cxt_.bufLen, localLen + 16, remoteLen + 16,
+		(LPSOCKADDR*)&LocalAddr, &localLen, (LPSOCKADDR*)&ClientAddr, &remoteLen);
+
+	//新连接到达
+	char str[INET_ADDRSTRLEN];
+	std::cout << "new client:" << inet_ntop(AF_INET, &ClientAddr->sin_addr, str, sizeof(str));
+	std::cout << "port" << ntohs(ClientAddr->sin_port) << std::endl;
+
 	if (newConnCallback_)
 	{
 		newConnCallback_(cxt_.client);
