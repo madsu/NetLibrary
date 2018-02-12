@@ -21,7 +21,7 @@ public:
 public:
 	void Start(INT worker_nums = 0);
 	void Stop();
-	void Loop();
+	void Loop(int time_out = 100);
 	void Register(HANDLE h, ULONG_PTR key);
 
 private:

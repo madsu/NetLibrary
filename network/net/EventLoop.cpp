@@ -1,5 +1,6 @@
 #include "EventLoop.h"
 #include "Channel.h"
+#include <chrono>
 
 EventLoop::EventLoop()
 	:iocp_(CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0))
@@ -8,6 +9,7 @@ EventLoop::EventLoop()
 
 EventLoop::~EventLoop()
 {
+	Stop();
 }
 
 void EventLoop::Start(INT worker_nums /* = 0 */)
@@ -30,28 +32,31 @@ void EventLoop::Start(INT worker_nums /* = 0 */)
 
 void EventLoop::Stop()
 {
-	if (iocp_ != INVALID_HANDLE_VALUE)
+	if (iocp_ != INVALID_HANDLE_VALUE) {
 		CloseHandle(iocp_);
+		iocp_ = INVALID_HANDLE_VALUE;
+	}
 
 	std::vector<std::thread>::iterator iter = workers_.begin();
 	for (; iter != workers_.end(); ++iter)
 		iter->join();
 }
 
-void EventLoop::Loop()
+void EventLoop::Loop(int time_out /* = 100 */)
 {
-	while (true)
-	{
-		std::unique_lock<std::mutex> lcx(mtx_);
-		consume_.wait(lcx, [this] {return tasks_.size() != 0; });
+	std::unique_lock<std::mutex> lcx(mtx_);
+	auto now = std::chrono::system_clock::now();
+	consume_.wait_until(lcx, now + std::chrono::milliseconds(time_out), [this] {return tasks_.size() != 0; });
 
-		Task task = tasks_.front();
-		tasks_.pop_front();
+	std::deque<Task> temp_tasks_;
+	tasks_.swap(temp_tasks_);
+	produce_.notify_all();
+
+	for (auto& task : temp_tasks_)
+	{
 		Channel* channel = task.channel;
 		PER_IO_CONTEXT* io = task.ctx;
 		channel->HandleIoMessage(io);
-
-		produce_.notify_all();
 	}
 }
 
