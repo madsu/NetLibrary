@@ -3,6 +3,7 @@
 #include <functional>
 #include <WinSock2.h>
 #include <MSWSock.h>
+#include <WS2tcpip.h>
 #include <Windows.h>
 #pragma comment(lib, "WS2_32")
 

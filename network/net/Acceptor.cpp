@@ -1,6 +1,5 @@
 #include "Acceptor.h"
 #include <iostream>
-#include <WS2tcpip.h>
 
 Acceptor::Acceptor(EventLoop* loop, int port)
 	: socket_(WSASocket(AF_INET, SOCK_STREAM, IPPROTO_IP, NULL, 0, WSA_FLAG_OVERLAPPED))
@@ -56,14 +55,16 @@ void Acceptor::HandleAccept()
 	getAcceptExSockAddrs_(cxt_.buffer, cxt_.bufLen, localLen + 16, remoteLen + 16,
 		(LPSOCKADDR*)&LocalAddr, &localLen, (LPSOCKADDR*)&ClientAddr, &remoteLen);
 
-	//新连接到达
-	char str[INET_ADDRSTRLEN];
-	std::cout << "new client:" << inet_ntop(AF_INET, &ClientAddr->sin_addr, str, sizeof(str));
-	std::cout << "port" << ntohs(ClientAddr->sin_port) << std::endl;
+	////新连接到达
+	//char str[INET_ADDRSTRLEN];
+	//std::cout << "new client:" << inet_ntop(AF_INET, &ClientAddr->sin_addr, str, sizeof(str));
+	//std::cout << "  port" << ntohs(ClientAddr->sin_port) << std::endl;
 
 	if (newConnCallback_)
 	{
-		newConnCallback_(cxt_.client);
+		InetAddress peerAddr(*ClientAddr);
+		InetAddress localAddr(*LocalAddr);
+		newConnCallback_(cxt_.client, peerAddr, localAddr);
 	}
 
 	//继续投递事件

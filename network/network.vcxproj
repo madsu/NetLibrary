@@ -24,6 +24,7 @@
     <ClCompile Include="net\Acceptor.cpp" />
     <ClCompile Include="net\Channel.cpp" />
     <ClCompile Include="net\EventLoop.cpp" />
+    <ClCompile Include="net\InetAddress.cpp" />
     <ClCompile Include="net\TcpConnection.cpp" />
     <ClCompile Include="net\TCPServer.cpp" />
   </ItemGroup>
@@ -33,6 +34,7 @@
     <ClInclude Include="net\Callbacks.h" />
     <ClInclude Include="net\Channel.h" />
     <ClInclude Include="net\EventLoop.h" />
+    <ClInclude Include="net\InetAddress.h" />
     <ClInclude Include="net\SocketCommon.h" />
     <ClInclude Include="net\TcpConnection.h" />
     <ClInclude Include="net\TCPServer.h" />

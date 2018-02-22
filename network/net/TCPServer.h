@@ -24,16 +24,18 @@ public:
 	}
 
 private:
-	void NewConnection(SOCKET socket);
+	void NewConnection(SOCKET socket, const InetAddress& peerAddr, const InetAddress& localAddr);
 	void RemoveConnection(TcpConnectionPtr conn);
 
 private:
 	EventLoop* loop_;
 	CInitSocket init_;
 	Acceptor   accept_;
-	std::map<UINT32, TcpConnectionPtr> sessions_;
 
-	//用户回调
+	//connection map
+	std::map<std::string, TcpConnectionPtr> sessions_;
+
+	//user callback
 	ConnectionCallback connectionCallback_;
 	MessageCallback    messageCallback_;
 };

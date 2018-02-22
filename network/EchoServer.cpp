@@ -23,7 +23,7 @@ void EchoServer::Start()
 
 void EchoServer::onConnection(const TcpConnectionPtr& conn)
 {
-
+	std::cout << "new client:" << conn->name().c_str() << std::endl;
 }
 
 void EchoServer::onMessage(const TcpConnectionPtr& conn, char* buf)

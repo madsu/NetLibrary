@@ -1,13 +1,12 @@
 #pragma once
 #include "SocketCommon.h"
 #include "Channel.h"
+#include "InetAddress.h"
 
-class EventLoop;
-class Channel;
 class Acceptor
 {
 public:
-	typedef std::function<void(SOCKET)> NewConnCallback;
+	typedef std::function<void(SOCKET, const InetAddress&, const InetAddress&)> NewConnCallback;
 
 	Acceptor(EventLoop* loop, int port);
 	~Acceptor();
