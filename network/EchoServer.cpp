@@ -23,10 +23,15 @@ void EchoServer::Start()
 
 void EchoServer::onConnection(const TcpConnectionPtr& conn)
 {
-	std::cout << "new client:" << conn->name().c_str() << std::endl;
+	if (conn->GetState() == kConnected) {
+		std::cout << "new client:" << conn->name().c_str() << std::endl;
+	}
+	else {
+		std::cout << "client disconnected:" << conn->name().c_str() << std::endl;
+	}
 }
 
 void EchoServer::onMessage(const TcpConnectionPtr& conn, char* buf)
 {
-	std::cout << buf << std::endl;
+	std::cout << "client:" << conn->name().c_str() << " recv:" << buf << std::endl;
 }

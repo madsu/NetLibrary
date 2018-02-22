@@ -3,9 +3,10 @@
 #include "Channel.h"
 #include "InetAddress.h"
 
-enum 
+enum Estate
 {
-
+	kConnected = 0,
+	kDisconnected
 };
 
 class TcpConnection
@@ -20,6 +21,7 @@ public:
 	const std::string name() const { return peerAddr_.toIpPort(); }
 	const InetAddress& localAddress() const { return localAddr_; }
 	const InetAddress& peerAddress() const { return peerAddr_; }
+	Estate GetState() const { return state_; }
 
 	void SetMessageCallback(const MessageCallback& cb)
 	{
@@ -41,12 +43,16 @@ public:
 
 	void OnDestroyed();
 
-	void PostRecv();
 	void HandleRead(char* buf, DWORD len);
+
+private:
+	void PostRecv();
+	void SetState(Estate state) { state_ = state; };
 
 private:
 	Channel channel_;
 
+	Estate state_;
 	const InetAddress localAddr_;
 	const InetAddress peerAddr_;
 

@@ -42,11 +42,13 @@ void TcpConnection::PostRecv()
 void TcpConnection::OnEstablished()
 {
 	PostRecv();
+	SetState(kConnected);
 	connectionCallback_(this);
 }
 
 void TcpConnection::OnDestroyed()
 {
 	closesocket(channel_.GetSocket());
+	SetState(kDisconnected);
 	connectionCallback_(this);
 }
