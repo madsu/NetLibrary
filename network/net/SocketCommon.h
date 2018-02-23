@@ -10,9 +10,10 @@
 #include <map>
 #include <vector>
 #include <list>
+#include <assert.h>
 
+#include "Buffer.h"
 #define  MAX_POST_ACCEPT 10
-#define  MAX_BUFFER_LEN 10240
 
 enum IO_TYPE
 {
@@ -27,8 +28,7 @@ typedef struct _PER_IO_CONTEXT_
 	OVERLAPPED overlapped;
 	IO_TYPE    ioType;
 	WSABUF     wsaBuff;
-	char       buffer[MAX_BUFFER_LEN];
-	DWORD      bufLen;
+	Buffer     buf;
 	SOCKET     client;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
 

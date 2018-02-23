@@ -94,20 +94,25 @@ void EventLoop::Worker()
 	DWORD dwTranceBytes = 0;
 	ULONG_PTR uComKey = NULL;
 	LPOVERLAPPED pOverlapped = NULL;
-	BOOL bRet = FALSE;
 
 	while (true)
 	{
-		bRet = GetQueuedCompletionStatus(iocp_, &dwTranceBytes, &uComKey, &pOverlapped, INFINITE);
-		if (!bRet && !pOverlapped)
+		BOOL bRet = GetQueuedCompletionStatus(iocp_, &dwTranceBytes, &uComKey, &pOverlapped, INFINITE);
+		if (bRet == FALSE) 
 		{
-			return;
+			//收到退出消息
+			if (GetLastError() == ERROR_INVALID_HANDLE)
+				return;
+
+			//没有从完成端口取出完成包，一般是因为超时
+			if(!pOverlapped)
+				continue;
 		}
 
 		Task task;
 		task.channel = reinterpret_cast<Channel*>(uComKey);
 		task.ctx = CONTAINING_RECORD(pOverlapped, PER_IO_CONTEXT, overlapped);
-		task.ctx->bufLen = dwTranceBytes;
+		task.ctx->buf.WriteBytes(dwTranceBytes);
 
 		std::unique_lock<std::mutex> lcx(mtx_);
 		produce_.wait(lcx, [this] {return tasks_.size() != maxSize; });

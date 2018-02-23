@@ -24,7 +24,7 @@ void Channel::HandleIoMessage(PER_IO_CONTEXT* cxt)
 
 	case IO_READ:
 	{
-		readCallback_(cxt->buffer, cxt->bufLen);
+		readCallback_(&cxt->buf);
 	}
 	break;
 

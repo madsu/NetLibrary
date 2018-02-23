@@ -22,6 +22,7 @@
     <ClCompile Include="EchoServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="net\Acceptor.cpp" />
+    <ClCompile Include="net\Buffer.cpp" />
     <ClCompile Include="net\Channel.cpp" />
     <ClCompile Include="net\EventLoop.cpp" />
     <ClCompile Include="net\InetAddress.cpp" />
@@ -31,6 +32,7 @@
   <ItemGroup>
     <ClInclude Include="EchoServer.h" />
     <ClInclude Include="net\Acceptor.h" />
+    <ClInclude Include="net\Buffer.h" />
     <ClInclude Include="net\Callbacks.h" />
     <ClInclude Include="net\Channel.h" />
     <ClInclude Include="net\EventLoop.h" />

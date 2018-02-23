@@ -7,7 +7,7 @@ TcpConnection::TcpConnection(EventLoop* loop, SOCKET socket,
 	, peerAddr_(peerAddr)
 {
 	channel_.SetReadCallback(
-		std::bind(&TcpConnection::HandleRead, this, std::placeholders::_1, std::placeholders::_2));
+		std::bind(&TcpConnection::HandleRead, this, std::placeholders::_1));
 }
 
 TcpConnection::~TcpConnection()
@@ -15,9 +15,9 @@ TcpConnection::~TcpConnection()
 
 }
 
-void TcpConnection::HandleRead(char* buf, DWORD len)
+void TcpConnection::HandleRead(Buffer* buf)
 {
-	if (len == 0) {
+	if (buf->GetReadableBytes() == 0) {
 		closeCallback_(this);
 		return;
 	}
@@ -28,15 +28,17 @@ void TcpConnection::HandleRead(char* buf, DWORD len)
 
 void TcpConnection::PostRecv()
 {
-	DWORD dwBytes = 0;
 	DWORD flags = 0;
-
-	memset(&ctx_, 0, sizeof(ctx_));
 	ctx_.ioType = IO_READ;
-	ctx_.wsaBuff.buf = ctx_.buffer;
-	ctx_.wsaBuff.len = MAX_BUFFER_LEN;
+	ctx_.wsaBuff.buf = ctx_.buf.GetWriterBuf();
+	ctx_.wsaBuff.len = ctx_.buf.GetWriteableBytes();
 
-    WSARecv(channel_.GetSocket(), &ctx_.wsaBuff, 1, &dwBytes, &flags, &ctx_.overlapped, NULL);
+    INT rc = WSARecv(channel_.GetSocket(), &ctx_.wsaBuff, 1, NULL, &flags, &ctx_.overlapped, NULL);
+	if (rc == SOCKET_ERROR && WSA_IO_PENDING != WSAGetLastError())
+	{
+		closeCallback_(this);
+		return;
+	}
 }
 
 void TcpConnection::OnEstablished()

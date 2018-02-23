@@ -52,7 +52,7 @@ void Acceptor::HandleAccept()
 	int remoteLen = sizeof(SOCKADDR_IN);
 	int localLen = sizeof(SOCKADDR_IN);
 
-	getAcceptExSockAddrs_(cxt_.buffer, cxt_.bufLen, localLen + 16, remoteLen + 16,
+	getAcceptExSockAddrs_(cxt_.buf.GetReaderBuf(), cxt_.buf.GetReadableBytes(), localLen + 16, remoteLen + 16,
 		(LPSOCKADDR*)&LocalAddr, &localLen, (LPSOCKADDR*)&ClientAddr, &remoteLen);
 
 	////新连接到达
@@ -78,12 +78,13 @@ void Acceptor::PostAccept()
 	if (clientsock_ == INVALID_SOCKET)
 		return ;
 
-	memset(&cxt_, 0, sizeof(cxt_));
 	cxt_.ioType = IO_ACCEPT;
 	cxt_.client = clientsock_;
+	cxt_.buf.RetriveAll();
+
 	DWORD dwBytes = 0;
 	INT   len = sizeof(SOCKADDR_IN) + 16;
-	BOOL ret = acceptEx_(socket_, clientsock_, &cxt_.buffer, 0, len, len, &dwBytes, &cxt_.overlapped);
+	BOOL ret = acceptEx_(socket_, clientsock_, cxt_.buf.GetWriterBuf(), 0, len, len, &dwBytes, &cxt_.overlapped);
 	if (FALSE == ret && ERROR_IO_PENDING != GetLastError()) {
 		std::cout << "Accept failed:" << std::endl;
 	}

@@ -43,7 +43,7 @@ public:
 
 	void OnDestroyed();
 
-	void HandleRead(char* buf, DWORD len);
+	void HandleRead(Buffer* buf);
 
 private:
 	void PostRecv();
