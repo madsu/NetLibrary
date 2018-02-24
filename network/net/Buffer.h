@@ -26,6 +26,12 @@ public:
 	std::string RetriveAsString(int len);
 	std::string RetriveAllAsString();
 
+	//Append
+	void Append(const char* buf, int len);
+private:
+	void EnsureWritableBytes(int len);
+	void MakeSpace(int len);
+
 private:
 	char buf_[MAX_BUFFER_LEN];
 	int readerIndex_;

@@ -24,12 +24,14 @@ void Channel::HandleIoMessage(PER_IO_CONTEXT* cxt)
 
 	case IO_READ:
 	{
+		cxt->buf.WriteBytes(cxt->transferBytes);
 		readCallback_(&cxt->buf);
 	}
 	break;
 
 	case IO_WRITE:
 	{
+		cxt->buf.Retrive(cxt->transferBytes);
 		writeCallback_();
 	}
 	break;

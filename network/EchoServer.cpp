@@ -33,5 +33,7 @@ void EchoServer::onConnection(const TcpConnectionPtr& conn)
 
 void EchoServer::onMessage(const TcpConnectionPtr& conn, Buffer* buf)
 {
-	std::cout << "client:" << conn->name().c_str() << " recv:" << buf->RetriveAllAsString() << std::endl;
+	std::string text = buf->RetriveAllAsString();
+	std::cout << "client:" << conn->name().c_str() << " recv:" << text << std::endl;
+	conn->Send(text.c_str(), text.length());
 }

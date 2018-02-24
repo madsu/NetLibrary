@@ -30,6 +30,7 @@ typedef struct _PER_IO_CONTEXT_
 	WSABUF     wsaBuff;
 	Buffer     buf;
 	SOCKET     client;
+	DWORD      transferBytes;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
 
 class CInitSocket

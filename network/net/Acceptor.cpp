@@ -55,11 +55,6 @@ void Acceptor::HandleAccept()
 	getAcceptExSockAddrs_(cxt_.buf.GetReaderBuf(), cxt_.buf.GetReadableBytes(), localLen + 16, remoteLen + 16,
 		(LPSOCKADDR*)&LocalAddr, &localLen, (LPSOCKADDR*)&ClientAddr, &remoteLen);
 
-	////新连接到达
-	//char str[INET_ADDRSTRLEN];
-	//std::cout << "new client:" << inet_ntop(AF_INET, &ClientAddr->sin_addr, str, sizeof(str));
-	//std::cout << "  port" << ntohs(ClientAddr->sin_port) << std::endl;
-
 	if (newConnCallback_)
 	{
 		InetAddress peerAddr(*ClientAddr);

@@ -40,10 +40,12 @@ public:
 	}
 
 	void OnEstablished();
-
 	void OnDestroyed();
-
 	void HandleRead(Buffer* buf);
+
+	//Send data
+	void Send(const char* buf, int len);
+	void HandleWrite();
 
 private:
 	void PostRecv();
@@ -51,12 +53,14 @@ private:
 
 private:
 	Channel channel_;
-
+	//connetion info
 	Estate state_;
 	const InetAddress localAddr_;
 	const InetAddress peerAddr_;
-
-	PER_IO_CONTEXT ctx_;
+	//send recv buffer
+	PER_IO_CONTEXT recvCtx_;
+	PER_IO_CONTEXT sendCtx_;
+	//user callback
 	MessageCallback messageCallback_;
 	ConnectionCallback connectionCallback_;
 	CloseCallback   closeCallback_;

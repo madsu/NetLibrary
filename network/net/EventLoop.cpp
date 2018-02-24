@@ -112,7 +112,7 @@ void EventLoop::Worker()
 		Task task;
 		task.channel = reinterpret_cast<Channel*>(uComKey);
 		task.ctx = CONTAINING_RECORD(pOverlapped, PER_IO_CONTEXT, overlapped);
-		task.ctx->buf.WriteBytes(dwTranceBytes);
+		task.ctx->transferBytes = dwTranceBytes;
 
 		std::unique_lock<std::mutex> lcx(mtx_);
 		produce_.wait(lcx, [this] {return tasks_.size() != maxSize; });
