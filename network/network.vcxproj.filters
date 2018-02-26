@@ -19,6 +19,9 @@
     <Filter Include="Source Files\net">
       <UniqueIdentifier>{95904b88-da32-4468-9084-d74d8db4e3d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\proto">
+      <UniqueIdentifier>{691a248f-59dd-4f59-8f5b-c20b7e1753ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EchoServer.h">
@@ -51,6 +54,9 @@
     <ClInclude Include="net\Buffer.h">
       <Filter>Header Files\net</Filter>
     </ClInclude>
+    <ClInclude Include="proto\1.pb.h">
+      <Filter>Header Files\proto</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="net\Buffer.cpp">
       <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\1.pb.cc">
+      <Filter>Header Files\proto</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

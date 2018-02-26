@@ -73,6 +73,7 @@ void Acceptor::PostAccept()
 	if (clientsock_ == INVALID_SOCKET)
 		return ;
 
+	ZeroMemory(&cxt_.overlapped, sizeof(OVERLAPPED));
 	cxt_.ioType = IO_ACCEPT;
 	cxt_.client = clientsock_;
 	cxt_.buf.RetriveAll();
@@ -80,7 +81,7 @@ void Acceptor::PostAccept()
 	DWORD dwBytes = 0;
 	INT   len = sizeof(SOCKADDR_IN) + 16;
 	BOOL ret = acceptEx_(socket_, clientsock_, cxt_.buf.GetWriterBuf(), 0, len, len, &dwBytes, &cxt_.overlapped);
-	if (FALSE == ret && ERROR_IO_PENDING != GetLastError()) {
+	if (FALSE == ret && ERROR_IO_PENDING != WSAGetLastError()) {
 		std::cout << "Accept failed:" << std::endl;
 	}
 	return;

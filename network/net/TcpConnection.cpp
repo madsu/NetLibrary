@@ -31,6 +31,7 @@ void TcpConnection::HandleRead(Buffer* buf)
 void TcpConnection::PostRecv()
 {
 	DWORD flags = 0;
+	ZeroMemory(&recvCtx_.overlapped, sizeof(OVERLAPPED));
 	recvCtx_.ioType = IO_READ;
 	recvCtx_.wsaBuff.buf = recvCtx_.buf.GetWriterBuf();
 	recvCtx_.wsaBuff.len = recvCtx_.buf.GetWriteableBytes();
@@ -62,6 +63,7 @@ void TcpConnection::HandleWrite()
 	do
 	{
 		DWORD sendBytes = 0;
+		ZeroMemory(&sendCtx_.overlapped, sizeof(OVERLAPPED));
 		sendCtx_.ioType = IO_WRITE;
 		sendCtx_.wsaBuff.buf = sendCtx_.buf.GetReaderBuf();
 		sendCtx_.wsaBuff.len = sendCtx_.buf.GetReadableBytes();

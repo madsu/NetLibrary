@@ -1,8 +1,8 @@
 #include "net/EventLoop.h"
 #include "net/TCPServer.h"
 #include "EchoServer.h"
+#include "proto/1.pb.h"
 #include <conio.h>
-
 bool running = true;
 void thread_task()
 {
@@ -18,6 +18,8 @@ void thread_task()
 
 int main()
 {
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
+
 	std::thread t(thread_task);
 	
 	char szCMD[256] = {};
@@ -37,5 +39,6 @@ int main()
 		Sleep(200);
 	}
 
+	google::protobuf::ShutdownProtobufLibrary();
 	return 0;
 }
