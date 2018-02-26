@@ -20,19 +20,14 @@
 #endif
 // @@protoc_insertion_point(includes)
 namespace test {
-class PersonDefaultTypeInternal {
+class SearchRequestDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Person>
+  ::google::protobuf::internal::ExplicitlyConstructed<SearchRequest>
       _instance;
-} _Person_default_instance_;
-class AddressBookDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<AddressBook>
-      _instance;
-} _AddressBook_default_instance_;
+} _SearchRequest_default_instance_;
 }  // namespace test
 namespace protobuf_1_2eproto {
-void InitDefaultsPersonImpl() {
+void InitDefaultsSearchRequestImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
 #ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
@@ -41,68 +36,36 @@ void InitDefaultsPersonImpl() {
   ::google::protobuf::internal::InitProtobufDefaults();
 #endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
-    void* ptr = &::test::_Person_default_instance_;
-    new (ptr) ::test::Person();
+    void* ptr = &::test::_SearchRequest_default_instance_;
+    new (ptr) ::test::SearchRequest();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::test::Person::InitAsDefaultInstance();
+  ::test::SearchRequest::InitAsDefaultInstance();
 }
 
-void InitDefaultsPerson() {
+void InitDefaultsSearchRequest() {
   static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsPersonImpl);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSearchRequestImpl);
 }
 
-void InitDefaultsAddressBookImpl() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  protobuf_1_2eproto::InitDefaultsPerson();
-  {
-    void* ptr = &::test::_AddressBook_default_instance_;
-    new (ptr) ::test::AddressBook();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::test::AddressBook::InitAsDefaultInstance();
-}
-
-void InitDefaultsAddressBook() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsAddressBookImpl);
-}
-
-::google::protobuf::Metadata file_level_metadata[2];
+::google::protobuf::Metadata file_level_metadata[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::Person, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::Person, _internal_metadata_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::SearchRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::Person, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::Person, age_),
-  0,
-  1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::AddressBook, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::AddressBook, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::AddressBook, persion_),
-  ~0u,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::SearchRequest, query_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::SearchRequest, page_number_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::test::SearchRequest, result_per_page_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::test::Person)},
-  { 9, 15, sizeof(::test::AddressBook)},
+  { 0, -1, sizeof(::test::SearchRequest)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::test::_Person_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::test::_AddressBook_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::test::_SearchRequest_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -121,18 +84,18 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\0071.proto\022\004test\"#\n\006Person\022\014\n\004name\030\001 \002(\t\022"
-      "\013\n\003age\030\002 \002(\005\",\n\013AddressBook\022\035\n\007persion\030\001"
-      " \003(\0132\014.test.Person"
+      "\n\0071.proto\022\004test\"L\n\rSearchRequest\022\r\n\005quer"
+      "y\030\001 \001(\t\022\023\n\013page_number\030\002 \001(\005\022\027\n\017result_p"
+      "er_page\030\003 \001(\005b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 98);
+      descriptor, 101);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "1.proto", &protobuf_RegisterTypes);
 }
@@ -152,123 +115,138 @@ namespace test {
 
 // ===================================================================
 
-void Person::InitAsDefaultInstance() {
+void SearchRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Person::kNameFieldNumber;
-const int Person::kAgeFieldNumber;
+const int SearchRequest::kQueryFieldNumber;
+const int SearchRequest::kPageNumberFieldNumber;
+const int SearchRequest::kResultPerPageFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Person::Person()
+SearchRequest::SearchRequest()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_1_2eproto::InitDefaultsPerson();
+    ::protobuf_1_2eproto::InitDefaultsSearchRequest();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:test.Person)
+  // @@protoc_insertion_point(constructor:test.SearchRequest)
 }
-Person::Person(const Person& from)
+SearchRequest::SearchRequest(const SearchRequest& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_name()) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  query_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.query().size() > 0) {
+    query_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.query_);
   }
-  age_ = from.age_;
-  // @@protoc_insertion_point(copy_constructor:test.Person)
+  ::memcpy(&page_number_, &from.page_number_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_per_page_) -
+    reinterpret_cast<char*>(&page_number_)) + sizeof(result_per_page_));
+  // @@protoc_insertion_point(copy_constructor:test.SearchRequest)
 }
 
-void Person::SharedCtor() {
+void SearchRequest::SharedCtor() {
+  query_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&page_number_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_per_page_) -
+      reinterpret_cast<char*>(&page_number_)) + sizeof(result_per_page_));
   _cached_size_ = 0;
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  age_ = 0;
 }
 
-Person::~Person() {
-  // @@protoc_insertion_point(destructor:test.Person)
+SearchRequest::~SearchRequest() {
+  // @@protoc_insertion_point(destructor:test.SearchRequest)
   SharedDtor();
 }
 
-void Person::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void SearchRequest::SharedDtor() {
+  query_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void Person::SetCachedSize(int size) const {
+void SearchRequest::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Person::descriptor() {
+const ::google::protobuf::Descriptor* SearchRequest::descriptor() {
   ::protobuf_1_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_1_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const Person& Person::default_instance() {
-  ::protobuf_1_2eproto::InitDefaultsPerson();
+const SearchRequest& SearchRequest::default_instance() {
+  ::protobuf_1_2eproto::InitDefaultsSearchRequest();
   return *internal_default_instance();
 }
 
-Person* Person::New(::google::protobuf::Arena* arena) const {
-  Person* n = new Person;
+SearchRequest* SearchRequest::New(::google::protobuf::Arena* arena) const {
+  SearchRequest* n = new SearchRequest;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Person::Clear() {
-// @@protoc_insertion_point(message_clear_start:test.Person)
+void SearchRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:test.SearchRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(!name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-    (*name_.UnsafeRawStringPointer())->clear();
-  }
-  age_ = 0;
-  _has_bits_.Clear();
+  query_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&page_number_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_per_page_) -
+      reinterpret_cast<char*>(&page_number_)) + sizeof(result_per_page_));
   _internal_metadata_.Clear();
 }
 
-bool Person::MergePartialFromCodedStream(
+bool SearchRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:test.Person)
+  // @@protoc_insertion_point(parse_start:test.SearchRequest)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string name = 1;
+      // string query = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "test.Person.name");
+                input, this->mutable_query()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->query().data(), static_cast<int>(this->query().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "test.SearchRequest.query"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 age = 2;
+      // int32 page_number = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          set_has_age();
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &age_)));
+                 input, &page_number_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 result_per_page = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_per_page_)));
         } else {
           goto handle_unusual;
         }
@@ -287,372 +265,111 @@ bool Person::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:test.Person)
+  // @@protoc_insertion_point(parse_success:test.SearchRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:test.Person)
+  // @@protoc_insertion_point(parse_failure:test.SearchRequest)
   return false;
 #undef DO_
 }
 
-void Person::SerializeWithCachedSizes(
+void SearchRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:test.Person)
+  // @@protoc_insertion_point(serialize_start:test.SearchRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "test.Person.name");
+  // string query = 1;
+  if (this->query().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->query().data(), static_cast<int>(this->query().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "test.SearchRequest.query");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
+      1, this->query(), output);
   }
 
-  // required int32 age = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->age(), output);
+  // int32 page_number = 2;
+  if (this->page_number() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->page_number(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  // int32 result_per_page = 3;
+  if (this->result_per_page() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->result_per_page(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:test.Person)
+  // @@protoc_insertion_point(serialize_end:test.SearchRequest)
 }
 
-::google::protobuf::uint8* Person::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* SearchRequest::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:test.Person)
+  // @@protoc_insertion_point(serialize_to_array_start:test.SearchRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "test.Person.name");
+  // string query = 1;
+  if (this->query().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->query().data(), static_cast<int>(this->query().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "test.SearchRequest.query");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+        1, this->query(), target);
   }
 
-  // required int32 age = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->age(), target);
+  // int32 page_number = 2;
+  if (this->page_number() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->page_number(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  // int32 result_per_page = 3;
+  if (this->result_per_page() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->result_per_page(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:test.Person)
+  // @@protoc_insertion_point(serialize_to_array_end:test.SearchRequest)
   return target;
 }
 
-size_t Person::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:test.Person)
+size_t SearchRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:test.SearchRequest)
   size_t total_size = 0;
 
-  if (has_name()) {
-    // required string name = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
-  }
-
-  if (has_age()) {
-    // required int32 age = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->age());
-  }
-
-  return total_size;
-}
-size_t Person::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:test.Person)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required string name = 1;
+  // string query = 1;
+  if (this->query().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+        this->query());
+  }
 
-    // required int32 age = 2;
+  // int32 page_number = 2;
+  if (this->page_number() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->age());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Person::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:test.Person)
-  GOOGLE_DCHECK_NE(&from, this);
-  const Person* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Person>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:test.Person)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:test.Person)
-    MergeFrom(*source);
-  }
-}
-
-void Person::MergeFrom(const Person& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:test.Person)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
-    if (cached_has_bits & 0x00000001u) {
-      set_has_name();
-      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-    }
-    if (cached_has_bits & 0x00000002u) {
-      age_ = from.age_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-}
-
-void Person::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:test.Person)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Person::CopyFrom(const Person& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:test.Person)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Person::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-  return true;
-}
-
-void Person::Swap(Person* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Person::InternalSwap(Person* other) {
-  using std::swap;
-  name_.Swap(&other->name_);
-  swap(age_, other->age_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata Person::GetMetadata() const {
-  protobuf_1_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_1_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void AddressBook::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AddressBook::kPersionFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-AddressBook::AddressBook()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_1_2eproto::InitDefaultsAddressBook();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:test.AddressBook)
-}
-AddressBook::AddressBook(const AddressBook& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
-      _cached_size_(0),
-      persion_(from.persion_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:test.AddressBook)
-}
-
-void AddressBook::SharedCtor() {
-  _cached_size_ = 0;
-}
-
-AddressBook::~AddressBook() {
-  // @@protoc_insertion_point(destructor:test.AddressBook)
-  SharedDtor();
-}
-
-void AddressBook::SharedDtor() {
-}
-
-void AddressBook::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* AddressBook::descriptor() {
-  ::protobuf_1_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_1_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const AddressBook& AddressBook::default_instance() {
-  ::protobuf_1_2eproto::InitDefaultsAddressBook();
-  return *internal_default_instance();
-}
-
-AddressBook* AddressBook::New(::google::protobuf::Arena* arena) const {
-  AddressBook* n = new AddressBook;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void AddressBook::Clear() {
-// @@protoc_insertion_point(message_clear_start:test.AddressBook)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  persion_.Clear();
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
-}
-
-bool AddressBook::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:test.AddressBook)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .test.Person persion = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_persion()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:test.AddressBook)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:test.AddressBook)
-  return false;
-#undef DO_
-}
-
-void AddressBook::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:test.AddressBook)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .test.Person persion = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->persion_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->persion(static_cast<int>(i)), output);
+        this->page_number());
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:test.AddressBook)
-}
-
-::google::protobuf::uint8* AddressBook::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:test.AddressBook)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .test.Person persion = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->persion_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->persion(static_cast<int>(i)), deterministic, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:test.AddressBook)
-  return target;
-}
-
-size_t AddressBook::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:test.AddressBook)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  // repeated .test.Person persion = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->persion_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->persion(static_cast<int>(i)));
-    }
+  // int32 result_per_page = 3;
+  if (this->result_per_page() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->result_per_page());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -662,63 +379,72 @@ size_t AddressBook::ByteSizeLong() const {
   return total_size;
 }
 
-void AddressBook::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:test.AddressBook)
+void SearchRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:test.SearchRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  const AddressBook* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const AddressBook>(
+  const SearchRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const SearchRequest>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:test.AddressBook)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:test.SearchRequest)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:test.AddressBook)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:test.SearchRequest)
     MergeFrom(*source);
   }
 }
 
-void AddressBook::MergeFrom(const AddressBook& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:test.AddressBook)
+void SearchRequest::MergeFrom(const SearchRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:test.SearchRequest)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  persion_.MergeFrom(from.persion_);
+  if (from.query().size() > 0) {
+
+    query_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.query_);
+  }
+  if (from.page_number() != 0) {
+    set_page_number(from.page_number());
+  }
+  if (from.result_per_page() != 0) {
+    set_result_per_page(from.result_per_page());
+  }
 }
 
-void AddressBook::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:test.AddressBook)
+void SearchRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:test.SearchRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void AddressBook::CopyFrom(const AddressBook& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:test.AddressBook)
+void SearchRequest::CopyFrom(const SearchRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:test.SearchRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool AddressBook::IsInitialized() const {
-  if (!::google::protobuf::internal::AllAreInitialized(this->persion())) return false;
+bool SearchRequest::IsInitialized() const {
   return true;
 }
 
-void AddressBook::Swap(AddressBook* other) {
+void SearchRequest::Swap(SearchRequest* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void AddressBook::InternalSwap(AddressBook* other) {
+void SearchRequest::InternalSwap(SearchRequest* other) {
   using std::swap;
-  persion_.InternalSwap(&other->persion_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  query_.Swap(&other->query_);
+  swap(page_number_, other->page_number_);
+  swap(result_per_page_, other->result_per_page_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata AddressBook::GetMetadata() const {
+::google::protobuf::Metadata SearchRequest::GetMetadata() const {
   protobuf_1_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_1_2eproto::file_level_metadata[kIndexInFileMessages];
 }

@@ -36,51 +36,45 @@ namespace protobuf_1_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[2];
+  static const ::google::protobuf::internal::ParseTable schema[1];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors();
-void InitDefaultsPersonImpl();
-void InitDefaultsPerson();
-void InitDefaultsAddressBookImpl();
-void InitDefaultsAddressBook();
+void InitDefaultsSearchRequestImpl();
+void InitDefaultsSearchRequest();
 inline void InitDefaults() {
-  InitDefaultsPerson();
-  InitDefaultsAddressBook();
+  InitDefaultsSearchRequest();
 }
 }  // namespace protobuf_1_2eproto
 namespace test {
-class AddressBook;
-class AddressBookDefaultTypeInternal;
-extern AddressBookDefaultTypeInternal _AddressBook_default_instance_;
-class Person;
-class PersonDefaultTypeInternal;
-extern PersonDefaultTypeInternal _Person_default_instance_;
+class SearchRequest;
+class SearchRequestDefaultTypeInternal;
+extern SearchRequestDefaultTypeInternal _SearchRequest_default_instance_;
 }  // namespace test
 namespace test {
 
 // ===================================================================
 
-class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:test.Person) */ {
+class SearchRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:test.SearchRequest) */ {
  public:
-  Person();
-  virtual ~Person();
+  SearchRequest();
+  virtual ~SearchRequest();
 
-  Person(const Person& from);
+  SearchRequest(const SearchRequest& from);
 
-  inline Person& operator=(const Person& from) {
+  inline SearchRequest& operator=(const SearchRequest& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Person(Person&& from) noexcept
-    : Person() {
+  SearchRequest(SearchRequest&& from) noexcept
+    : SearchRequest() {
     *this = ::std::move(from);
   }
 
-  inline Person& operator=(Person&& from) noexcept {
+  inline SearchRequest& operator=(SearchRequest&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -89,38 +83,31 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Person& default_instance();
+  static const SearchRequest& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Person* internal_default_instance() {
-    return reinterpret_cast<const Person*>(
-               &_Person_default_instance_);
+  static inline const SearchRequest* internal_default_instance() {
+    return reinterpret_cast<const SearchRequest*>(
+               &_SearchRequest_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     0;
 
-  void Swap(Person* other);
-  friend void swap(Person& a, Person& b) {
+  void Swap(SearchRequest* other);
+  friend void swap(SearchRequest& a, SearchRequest& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Person* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline SearchRequest* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Person* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  SearchRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Person& from);
-  void MergeFrom(const Person& from);
+  void CopyFrom(const SearchRequest& from);
+  void MergeFrom(const SearchRequest& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -136,7 +123,7 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Person* other);
+  void InternalSwap(SearchRequest* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -152,158 +139,42 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
-  // required string name = 1;
-  bool has_name() const;
-  void clear_name();
-  static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
+  // string query = 1;
+  void clear_query();
+  static const int kQueryFieldNumber = 1;
+  const ::std::string& query() const;
+  void set_query(const ::std::string& value);
   #if LANG_CXX11
-  void set_name(::std::string&& value);
+  void set_query(::std::string&& value);
   #endif
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  void set_query(const char* value);
+  void set_query(const char* value, size_t size);
+  ::std::string* mutable_query();
+  ::std::string* release_query();
+  void set_allocated_query(::std::string* query);
 
-  // required int32 age = 2;
-  bool has_age() const;
-  void clear_age();
-  static const int kAgeFieldNumber = 2;
-  ::google::protobuf::int32 age() const;
-  void set_age(::google::protobuf::int32 value);
+  // int32 page_number = 2;
+  void clear_page_number();
+  static const int kPageNumberFieldNumber = 2;
+  ::google::protobuf::int32 page_number() const;
+  void set_page_number(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:test.Person)
- private:
-  void set_has_name();
-  void clear_has_name();
-  void set_has_age();
-  void clear_has_age();
+  // int32 result_per_page = 3;
+  void clear_result_per_page();
+  static const int kResultPerPageFieldNumber = 3;
+  ::google::protobuf::int32 result_per_page() const;
+  void set_result_per_page(::google::protobuf::int32 value);
 
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::int32 age_;
-  friend struct ::protobuf_1_2eproto::TableStruct;
-  friend void ::protobuf_1_2eproto::InitDefaultsPersonImpl();
-};
-// -------------------------------------------------------------------
-
-class AddressBook : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:test.AddressBook) */ {
- public:
-  AddressBook();
-  virtual ~AddressBook();
-
-  AddressBook(const AddressBook& from);
-
-  inline AddressBook& operator=(const AddressBook& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  AddressBook(AddressBook&& from) noexcept
-    : AddressBook() {
-    *this = ::std::move(from);
-  }
-
-  inline AddressBook& operator=(AddressBook&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const AddressBook& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const AddressBook* internal_default_instance() {
-    return reinterpret_cast<const AddressBook*>(
-               &_AddressBook_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(AddressBook* other);
-  friend void swap(AddressBook& a, AddressBook& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline AddressBook* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  AddressBook* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const AddressBook& from);
-  void MergeFrom(const AddressBook& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(AddressBook* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .test.Person persion = 1;
-  int persion_size() const;
-  void clear_persion();
-  static const int kPersionFieldNumber = 1;
-  const ::test::Person& persion(int index) const;
-  ::test::Person* mutable_persion(int index);
-  ::test::Person* add_persion();
-  ::google::protobuf::RepeatedPtrField< ::test::Person >*
-      mutable_persion();
-  const ::google::protobuf::RepeatedPtrField< ::test::Person >&
-      persion() const;
-
-  // @@protoc_insertion_point(class_scope:test.AddressBook)
+  // @@protoc_insertion_point(class_scope:test.SearchRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  ::google::protobuf::internal::ArenaStringPtr query_;
+  ::google::protobuf::int32 page_number_;
+  ::google::protobuf::int32 result_per_page_;
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::test::Person > persion_;
   friend struct ::protobuf_1_2eproto::TableStruct;
-  friend void ::protobuf_1_2eproto::InitDefaultsAddressBookImpl();
+  friend void ::protobuf_1_2eproto::InitDefaultsSearchRequestImpl();
 };
 // ===================================================================
 
@@ -314,134 +185,92 @@ class AddressBook : public ::google::protobuf::Message /* @@protoc_insertion_poi
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Person
+// SearchRequest
 
-// required string name = 1;
-inline bool Person::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// string query = 1;
+inline void SearchRequest::clear_query() {
+  query_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Person::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
+inline const ::std::string& SearchRequest::query() const {
+  // @@protoc_insertion_point(field_get:test.SearchRequest.query)
+  return query_.GetNoArena();
 }
-inline void Person::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Person::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
-inline const ::std::string& Person::name() const {
-  // @@protoc_insertion_point(field_get:test.Person.name)
-  return name_.GetNoArena();
-}
-inline void Person::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:test.Person.name)
+inline void SearchRequest::set_query(const ::std::string& value) {
+  
+  query_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:test.SearchRequest.query)
 }
 #if LANG_CXX11
-inline void Person::set_name(::std::string&& value) {
-  set_has_name();
-  name_.SetNoArena(
+inline void SearchRequest::set_query(::std::string&& value) {
+  
+  query_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:test.Person.name)
+  // @@protoc_insertion_point(field_set_rvalue:test.SearchRequest.query)
 }
 #endif
-inline void Person::set_name(const char* value) {
+inline void SearchRequest::set_query(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:test.Person.name)
+  
+  query_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:test.SearchRequest.query)
 }
-inline void Person::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+inline void SearchRequest::set_query(const char* value, size_t size) {
+  
+  query_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:test.Person.name)
+  // @@protoc_insertion_point(field_set_pointer:test.SearchRequest.query)
 }
-inline ::std::string* Person::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:test.Person.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::std::string* SearchRequest::mutable_query() {
+  
+  // @@protoc_insertion_point(field_mutable:test.SearchRequest.query)
+  return query_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Person::release_name() {
-  // @@protoc_insertion_point(field_release:test.Person.name)
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::std::string* SearchRequest::release_query() {
+  // @@protoc_insertion_point(field_release:test.SearchRequest.query)
+  
+  return query_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Person::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
+inline void SearchRequest::set_allocated_query(::std::string* query) {
+  if (query != NULL) {
+    
   } else {
-    clear_has_name();
+    
   }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:test.Person.name)
+  query_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), query);
+  // @@protoc_insertion_point(field_set_allocated:test.SearchRequest.query)
 }
 
-// required int32 age = 2;
-inline bool Person::has_age() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// int32 page_number = 2;
+inline void SearchRequest::clear_page_number() {
+  page_number_ = 0;
 }
-inline void Person::set_has_age() {
-  _has_bits_[0] |= 0x00000002u;
+inline ::google::protobuf::int32 SearchRequest::page_number() const {
+  // @@protoc_insertion_point(field_get:test.SearchRequest.page_number)
+  return page_number_;
 }
-inline void Person::clear_has_age() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Person::clear_age() {
-  age_ = 0;
-  clear_has_age();
-}
-inline ::google::protobuf::int32 Person::age() const {
-  // @@protoc_insertion_point(field_get:test.Person.age)
-  return age_;
-}
-inline void Person::set_age(::google::protobuf::int32 value) {
-  set_has_age();
-  age_ = value;
-  // @@protoc_insertion_point(field_set:test.Person.age)
+inline void SearchRequest::set_page_number(::google::protobuf::int32 value) {
+  
+  page_number_ = value;
+  // @@protoc_insertion_point(field_set:test.SearchRequest.page_number)
 }
 
-// -------------------------------------------------------------------
-
-// AddressBook
-
-// repeated .test.Person persion = 1;
-inline int AddressBook::persion_size() const {
-  return persion_.size();
+// int32 result_per_page = 3;
+inline void SearchRequest::clear_result_per_page() {
+  result_per_page_ = 0;
 }
-inline void AddressBook::clear_persion() {
-  persion_.Clear();
+inline ::google::protobuf::int32 SearchRequest::result_per_page() const {
+  // @@protoc_insertion_point(field_get:test.SearchRequest.result_per_page)
+  return result_per_page_;
 }
-inline const ::test::Person& AddressBook::persion(int index) const {
-  // @@protoc_insertion_point(field_get:test.AddressBook.persion)
-  return persion_.Get(index);
-}
-inline ::test::Person* AddressBook::mutable_persion(int index) {
-  // @@protoc_insertion_point(field_mutable:test.AddressBook.persion)
-  return persion_.Mutable(index);
-}
-inline ::test::Person* AddressBook::add_persion() {
-  // @@protoc_insertion_point(field_add:test.AddressBook.persion)
-  return persion_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::test::Person >*
-AddressBook::mutable_persion() {
-  // @@protoc_insertion_point(field_mutable_list:test.AddressBook.persion)
-  return &persion_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::test::Person >&
-AddressBook::persion() const {
-  // @@protoc_insertion_point(field_list:test.AddressBook.persion)
-  return persion_;
+inline void SearchRequest::set_result_per_page(::google::protobuf::int32 value) {
+  
+  result_per_page_ = value;
+  // @@protoc_insertion_point(field_set:test.SearchRequest.result_per_page)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
