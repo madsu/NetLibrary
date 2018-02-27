@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="codec\Codec.cpp" />
+    <ClCompile Include="codec\Dispatcher.cpp" />
     <ClCompile Include="EchoServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="net\Acceptor.cpp" />
@@ -31,6 +33,8 @@
     <ClCompile Include="proto\1.pb.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="codec\Codec.h" />
+    <ClInclude Include="codec\Dispatcher.h" />
     <ClInclude Include="EchoServer.h" />
     <ClInclude Include="net\Acceptor.h" />
     <ClInclude Include="net\Buffer.h" />

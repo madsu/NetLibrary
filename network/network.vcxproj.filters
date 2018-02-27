@@ -22,6 +22,12 @@
     <Filter Include="Header Files\proto">
       <UniqueIdentifier>{691a248f-59dd-4f59-8f5b-c20b7e1753ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\codec">
+      <UniqueIdentifier>{302dcefb-1e9b-4c48-a814-6380d71fc5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\codec">
+      <UniqueIdentifier>{1e2029f7-4edb-4ea2-b187-2510b7eca315}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EchoServer.h">
@@ -57,6 +63,12 @@
     <ClInclude Include="proto\1.pb.h">
       <Filter>Header Files\proto</Filter>
     </ClInclude>
+    <ClInclude Include="codec\Codec.h">
+      <Filter>Header Files\codec</Filter>
+    </ClInclude>
+    <ClInclude Include="codec\Dispatcher.h">
+      <Filter>Header Files\codec</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="proto\1.pb.cc">
       <Filter>Header Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="codec\Codec.cpp">
+      <Filter>Source Files\codec</Filter>
+    </ClCompile>
+    <ClCompile Include="codec\Dispatcher.cpp">
+      <Filter>Source Files\codec</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

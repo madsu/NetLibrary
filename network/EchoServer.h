@@ -1,6 +1,8 @@
 #pragma once
 
 #include "net/TCPServer.h"
+#include "codec/codec.h"
+#include "codec/Dispatcher.h"
 
 class EchoServer
 {
@@ -15,4 +17,6 @@ public:
 
 private:
 	TcpServer server_;
+	ProtobufCodec codec_;
+	ProtobufDispatcher dispatcher_;
 };

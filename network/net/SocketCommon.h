@@ -10,7 +10,9 @@
 #include <map>
 #include <vector>
 #include <list>
+#include <string>
 #include <assert.h>
+#include <algorithm>
 
 #include "Buffer.h"
 #define  MAX_POST_ACCEPT 10
@@ -29,8 +31,8 @@ typedef struct _PER_IO_CONTEXT_
 	IO_TYPE    ioType;
 	WSABUF     wsaBuff;
 	Buffer     buf;
-	SOCKET     client;
 	DWORD      transferBytes;
+	SOCKET     client;
 }PER_IO_CONTEXT, *PPER_IO_CONTEXT;
 
 class CInitSocket

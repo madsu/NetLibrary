@@ -19,7 +19,7 @@ TcpConnection::~TcpConnection()
 
 void TcpConnection::HandleRead(Buffer* buf)
 {
-	if (buf->GetReadableBytes() == 0) {
+	if (buf->readableBytes() == 0) {
 		closeCallback_(this);
 		return;
 	}
@@ -33,8 +33,8 @@ void TcpConnection::PostRecv()
 	DWORD flags = 0;
 	ZeroMemory(&recvCtx_.overlapped, sizeof(OVERLAPPED));
 	recvCtx_.ioType = IO_READ;
-	recvCtx_.wsaBuff.buf = recvCtx_.buf.GetWriterBuf();
-	recvCtx_.wsaBuff.len = recvCtx_.buf.GetWriteableBytes();
+	recvCtx_.wsaBuff.buf = recvCtx_.buf.beginWrite();
+	recvCtx_.wsaBuff.len = recvCtx_.buf.writableBytes();
 
     INT rc = WSARecv(channel_.GetSocket(), &recvCtx_.wsaBuff, 1, NULL, &flags, &recvCtx_.overlapped, NULL);
 	if (rc == SOCKET_ERROR && WSA_IO_PENDING != WSAGetLastError())
@@ -46,8 +46,8 @@ void TcpConnection::PostRecv()
 
 void TcpConnection::Send(const char* buf, int len)
 {
-	int readbytes = sendCtx_.buf.GetReadableBytes();
-	sendCtx_.buf.Append(buf, len);
+	int readbytes = sendCtx_.buf.readableBytes();
+	sendCtx_.buf.append(buf, len);
 	if (readbytes == 0)
 	{
 		HandleWrite();
@@ -56,7 +56,7 @@ void TcpConnection::Send(const char* buf, int len)
 
 void TcpConnection::HandleWrite()
 {
-	if (sendCtx_.buf.GetReadableBytes() == 0)
+	if (sendCtx_.buf.readableBytes() == 0)
 		return;
 
 	int rc = SOCKET_ERROR;
@@ -65,8 +65,8 @@ void TcpConnection::HandleWrite()
 		DWORD sendBytes = 0;
 		ZeroMemory(&sendCtx_.overlapped, sizeof(OVERLAPPED));
 		sendCtx_.ioType = IO_WRITE;
-		sendCtx_.wsaBuff.buf = sendCtx_.buf.GetReaderBuf();
-		sendCtx_.wsaBuff.len = sendCtx_.buf.GetReadableBytes();
+		sendCtx_.wsaBuff.buf = sendCtx_.buf.beginRead();
+		sendCtx_.wsaBuff.len = sendCtx_.buf.readableBytes();
 		rc = WSASend(channel_.GetSocket(), &sendCtx_.wsaBuff, 1, &sendBytes, 0, &sendCtx_.overlapped, NULL);
 		if (rc == SOCKET_ERROR && WSAGetLastError() == WSA_IO_PENDING)
 		{
@@ -74,10 +74,10 @@ void TcpConnection::HandleWrite()
 		}
 		else if (rc == WSAEACCES)
 		{
-			sendCtx_.buf.Retrive(sendBytes);
+			sendCtx_.buf.retrieve(sendBytes);
 		}
 
-	} while (rc == WSAEACCES && sendCtx_.buf.GetReadableBytes() != 0);
+	} while (rc == WSAEACCES && sendCtx_.buf.readableBytes() != 0);
 }
 
 void TcpConnection::OnEstablished()

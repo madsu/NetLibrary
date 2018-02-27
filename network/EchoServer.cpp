@@ -2,13 +2,15 @@
 #include <iostream>
 
 EchoServer::EchoServer(EventLoop* loop, int port)
-	:server_(loop, port)
+	: server_(loop, port)
+	, codec_(std::bind(&ProtobufDispatcher::OnMessage, &dispatcher_,
+		std::placeholders::_1, std::placeholders::_2))
 {
 	server_.SetConectionCallback(
 		std::bind(&EchoServer::onConnection, this, std::placeholders::_1));
 
 	server_.SetMessageCallback(
-		std::bind(&EchoServer::onMessage, this, std::placeholders::_1, std::placeholders::_2));
+		std::bind(&ProtobufCodec::OnMessage, &codec_, std::placeholders::_1, std::placeholders::_2));
 }
 
 EchoServer::~EchoServer()
@@ -33,7 +35,7 @@ void EchoServer::onConnection(const TcpConnectionPtr& conn)
 
 void EchoServer::onMessage(const TcpConnectionPtr& conn, Buffer* buf)
 {
-	std::string text = buf->RetriveAllAsString();
+	std::string text = buf->retrieveAllAsString();
 	std::cout << "client:" << conn->name().c_str() << " recv:" << text << std::endl;
 	conn->Send(text.c_str(), text.length());
 }

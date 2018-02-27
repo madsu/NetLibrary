@@ -52,7 +52,7 @@ void Acceptor::HandleAccept()
 	int remoteLen = sizeof(SOCKADDR_IN);
 	int localLen = sizeof(SOCKADDR_IN);
 
-	getAcceptExSockAddrs_(cxt_.buf.GetReaderBuf(), cxt_.buf.GetReadableBytes(), localLen + 16, remoteLen + 16,
+	getAcceptExSockAddrs_(cxt_.buf.beginRead(), cxt_.buf.readableBytes(), localLen + 16, remoteLen + 16,
 		(LPSOCKADDR*)&LocalAddr, &localLen, (LPSOCKADDR*)&ClientAddr, &remoteLen);
 
 	if (newConnCallback_)
@@ -76,11 +76,11 @@ void Acceptor::PostAccept()
 	ZeroMemory(&cxt_.overlapped, sizeof(OVERLAPPED));
 	cxt_.ioType = IO_ACCEPT;
 	cxt_.client = clientsock_;
-	cxt_.buf.RetriveAll();
+	cxt_.buf.retrieveAll();
 
 	DWORD dwBytes = 0;
 	INT   len = sizeof(SOCKADDR_IN) + 16;
-	BOOL ret = acceptEx_(socket_, clientsock_, cxt_.buf.GetWriterBuf(), 0, len, len, &dwBytes, &cxt_.overlapped);
+	BOOL ret = acceptEx_(socket_, clientsock_, cxt_.buf.beginWrite(), 0, len, len, &dwBytes, &cxt_.overlapped);
 	if (FALSE == ret && ERROR_IO_PENDING != WSAGetLastError()) {
 		std::cout << "Accept failed:" << std::endl;
 	}
