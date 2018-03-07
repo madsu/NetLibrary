@@ -11,6 +11,9 @@ EchoServer::EchoServer(EventLoop* loop, int port)
 
 	server_.SetMessageCallback(
 		std::bind(&ProtobufCodec::OnMessage, &codec_, std::placeholders::_1, std::placeholders::_2));
+
+	dispatcher_.RegisterCallback<test::SearchRequest>(
+		std::bind(&EchoServer::onSearchRequest, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 EchoServer::~EchoServer()
@@ -33,9 +36,14 @@ void EchoServer::onConnection(const TcpConnectionPtr& conn)
 	}
 }
 
-void EchoServer::onMessage(const TcpConnectionPtr& conn, Buffer* buf)
+void EchoServer::onSearchRequest(const TcpConnectionPtr& conn, const SearchRequestPtr& msg)
 {
-	std::string text = buf->retrieveAllAsString();
-	std::cout << "client:" << conn->name().c_str() << " recv:" << text << std::endl;
-	conn->Send(text.c_str(), text.length());
+
 }
+
+//void EchoServer::onMessage(const TcpConnectionPtr& conn, Buffer* buf)
+//{
+//	std::string text = buf->retrieveAllAsString();
+//	std::cout << "client:" << conn->name().c_str() << " recv:" << text << std::endl;
+//	conn->Send(text.c_str(), text.length());
+//}

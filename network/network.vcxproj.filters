@@ -104,8 +104,5 @@
     <ClCompile Include="codec\Codec.cpp">
       <Filter>Source Files\codec</Filter>
     </ClCompile>
-    <ClCompile Include="codec\Dispatcher.cpp">
-      <Filter>Source Files\codec</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,19 +4,16 @@ ProtobufCodec::ProtobufCodec(const ProtobufMessageCallback& messageCb)
 	: messageCallback_(messageCb)
 	, errorCallback_(defaultErrorCallback)
 {
-
 }
 
 ProtobufCodec::ProtobufCodec(const ProtobufMessageCallback& messageCb, const ErrorCallback& errorCb)
 	: messageCallback_(messageCb)
 	, errorCallback_(errorCb)
 {
-
 }
 
 ProtobufCodec::~ProtobufCodec()
 {
-
 }
 
 int32_t asInt32(const char* buf)
@@ -75,7 +72,7 @@ MessagePtr ProtobufCodec::parse(const char* buf, int len, ErrorCode* error)
 	{
 		std::string typeName(buf + kHeaderLen, buf + kHeaderLen + nameLen - 1);
 		// create message object
-		message = createMessage(typeName);
+		message.reset(createMessage(typeName));
 		if (message)
 		{
 			// parse from buffer
@@ -103,7 +100,7 @@ MessagePtr ProtobufCodec::parse(const char* buf, int len, ErrorCode* error)
 	return message;
 }
 
-MessagePtr ProtobufCodec::createMessage(const std::string& type_name)
+google::protobuf::Message* ProtobufCodec::createMessage(const std::string& type_name)
 {
 	google::protobuf::Message* message = NULL;
 	const google::protobuf::Descriptor* descriptor =

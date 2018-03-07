@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="codec\Codec.cpp" />
-    <ClCompile Include="codec\Dispatcher.cpp" />
     <ClCompile Include="EchoServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="net\Acceptor.cpp" />

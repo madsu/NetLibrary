@@ -3,7 +3,7 @@
 #include "../net/TcpConnection.h"
 #include "google/protobuf/message.h"
 
-typedef google::protobuf::Message* MessagePtr;
+typedef std::shared_ptr<google::protobuf::Message> MessagePtr;
 
 class ProtobufCodec
 {
@@ -18,12 +18,8 @@ public:
 		kParseError,
 	};
 
-	typedef std::function<void(const TcpConnectionPtr&,
-		const MessagePtr)> ProtobufMessageCallback;
-
-	typedef std::function<void(const TcpConnectionPtr&,
-		Buffer*,
-		ErrorCode)> ErrorCallback;
+	typedef std::function<void(const TcpConnectionPtr&, const MessagePtr&)> ProtobufMessageCallback;
+	typedef std::function<void(const TcpConnectionPtr&, Buffer*, ErrorCode)> ErrorCallback;
 
 	explicit ProtobufCodec(const ProtobufMessageCallback& messageCb);
 	ProtobufCodec(const ProtobufMessageCallback& messageCb, const ErrorCallback& errorCb);
@@ -38,9 +34,7 @@ public:
 	static MessagePtr parse(const char* buf, int len, ErrorCode* errorCode);
 
 private:
-	static void defaultErrorCallback(const TcpConnectionPtr& conn,
-		Buffer* buf,
-		ErrorCode err);
+	static void defaultErrorCallback(const TcpConnectionPtr& conn, Buffer* buf, ErrorCode err);
 
 	ProtobufMessageCallback messageCallback_;
 	ErrorCallback  errorCallback_;
